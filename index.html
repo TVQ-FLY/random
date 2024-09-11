@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: aqua;
+            background-size: 800% 800%;
+            animation: gradientBG 5s ease infinite;
+        }
+    </style>
+</head>
+<body class="flex justify-center h-[100vh] items-center text-black m-0">
+    <div id="main-view" class="text-center bg-white p-[30px] rounded-[12px] p-[50px] shadow-[0_4px_10px_rgba(0,0,0,0.2)]">
+        <p id="names" class="font-bold text-xl uppercase pb-2">Ramdom từ 1 - 120</p>
+        <p class="font-bold text-sm">( Các số chỉ được chọn một lần )</p>
+        <p class=" font-bold text-md">Số được chọn là:</p>
+        <p class="number font-bold text-3xl text-red-500"></p>
+        <button onclick="generateRandomNumber()" class="py-[10px] px-[20px] m-[10px] cursor-pointer rounded-[5px] bg-blue-600 text-white text-[16px] hover:bg-blue-800 font-bold">CHECK !!!</button>
+    </div>
+
+    <script>
+        const availableNumbers = Array.from({ length: 120 }, (_, i) => i + 1); // Tạo một mảng số từ 1 đến 120
+    
+        function generateRandomNumber() {
+            if (availableNumbers.length === 0) {
+                document.querySelector('.number').textContent = "Bạn đã chọn hết số !";
+                return;
+            }
+    
+            const randomIndex = Math.floor(Math.random() * availableNumbers.length); // Chọn một chỉ số ngẫu nhiên trong mảng
+            const randomNumber = availableNumbers.splice(randomIndex, 1)[0]; // Lấy số ngẫu nhiên và loại bỏ nó khỏi mảng
+    
+            document.querySelector('.number').textContent = randomNumber; // Hiển thị số ngẫu nhiên
+        }
+    </script>
+
+    
+</body>
+
+</html>
